@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Origami Folds</title>
+  <meta name="description" content="Classic origami models with step-by-step folding diagrams. Works offline.">
+  <meta name="theme-color" content="#95AB9D">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/icon.svg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Origami">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="#/" class="brand" aria-label="Origami Folds home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><polygon points="6,40 32,10 30,40" fill="#c8553d"/><polygon points="30,40 32,10 58,40" fill="#a8432f"/><polygon points="14,40 50,40 32,54" fill="#e9dfcc"/></svg>
+      <span>
+        <strong>Origami Folds</strong>
+        <em>Classic paper models, one fold at a time</em>
+      </span>
+    </a>
+    <div class="header-actions">
+      <button id="legendBtn" class="btn ghost" type="button" aria-expanded="false" aria-controls="legend">Fold symbols</button>
+      <button id="installBtn" class="btn" type="button" hidden>Install app</button>
+    </div>
+  </header>
+
+  <section id="legend" class="legend panel" hidden aria-label="Fold symbols"></section>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <p>Tip: use a thin, square sheet (15 × 15 cm is ideal). Crease every fold firmly with a fingernail.</p>
+  </footer>
+
+  <script src="js/diagrams.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

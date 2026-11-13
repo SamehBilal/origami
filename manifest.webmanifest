@@ -1,0 +1,15 @@
+{
+  "name": "Origami Folds",
+  "short_name": "Origami",
+  "description": "Classic origami models with step-by-step folding diagrams.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#95AB9D",
+  "theme_color": "#95AB9D",
+  "icons": [
+    { "src": "images/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "images/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
