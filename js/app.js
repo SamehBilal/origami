@@ -5,6 +5,8 @@
   const app = document.getElementById('app');
   const LEVELS = { easy: 'Easy', medium: 'Intermediate', hard: 'Advanced' };
   const STORE_KEY = 'origami-made';
+  // ?shot = tools/build-images.js taking manifest screenshots: no fade, so diagrams are captured fully drawn.
+  if (/[?&]shot\b/.test(location.search)) document.documentElement.classList.add('no-anim');
 
   // ---------- storage (never required for the app to work) ----------
   function getMade() {
@@ -124,9 +126,18 @@
     if (next) next.addEventListener('click', () => go(index + 1));
     const madeBtn = document.getElementById('madeBtn');
     if (madeBtn) madeBtn.addEventListener('click', () => {
-      setMade(model.id, !getMade()[model.id]);
+      const nowMade = !getMade()[model.id];
+      setMade(model.id, nowMade);
       renderModel(model, index);
-      if (getMade()[model.id]) toast('Nice work! Saved to your collection.');
+      const count = Object.keys(getMade()).length;
+      if (nowMade) {
+        notify(count === models.length
+          ? `You’ve folded all ${models.length} models. Master folder!`
+          : `Nice work! ${count} of ${models.length} models folded.`,
+          { type: 'success', title: model.name });
+      } else {
+        notify(`${model.name} removed from your folded models.`, { title: 'My folds' });
+      }
     });
 
     // Swipe between steps on touch screens.
@@ -168,36 +179,8 @@
     if (e.key === 'Escape') location.hash = '#/';
   });
 
-  // ---------- toast ----------
-  let toastTimer;
-  function toast(msg) {
-    let el = document.querySelector('.toast');
-    if (!el) { el = document.createElement('div'); el.className = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
-    el.textContent = msg;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.remove(), 2600);
-  }
-
-  // ---------- PWA: install + offline ----------
-  const installBtn = document.getElementById('installBtn');
-  let deferredPrompt = null;
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.hidden = false;
-  });
-  installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
-    installBtn.hidden = true;
-  });
-  window.addEventListener('appinstalled', () => { installBtn.hidden = true; toast('Installed! Fold anywhere, even offline.'); });
-
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-  }
+  // Install, offline and update notes live in pwa.js; the notes themselves in notify.js.
+  const notify = (msg, opt) => (window.Notify ? window.Notify(msg, opt) : null);
 
   route();
 })();

@@ -1,15 +1,62 @@
 {
+  "id": "./",
   "name": "Origami Folds",
   "short_name": "Origami",
-  "description": "Classic origami models with step-by-step folding diagrams.",
-  "start_url": "./",
+  "description": "Classic origami models — cup, dart plane, fortune teller, puppy, tulip and crane — with a diagram for every fold. Works offline.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "./index.html?source=pwa",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "any",
   "background_color": "#95AB9D",
   "theme_color": "#95AB9D",
+  "categories": ["education", "entertainment", "kids", "lifestyle"],
   "icons": [
-    { "src": "images/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "images/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
-  ]
+    { "src": "images/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "images/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "images/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "images/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "images/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Crane",
+      "short_name": "Crane",
+      "description": "Fold the classic crane, step by step",
+      "url": "./index.html?source=pwa#/model/crane/1",
+      "icons": [{ "src": "images/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Dart Plane",
+      "short_name": "Plane",
+      "description": "The fast, straight-flying paper airplane",
+      "url": "./index.html?source=pwa#/model/dart/1",
+      "icons": [{ "src": "images/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Fortune Teller",
+      "short_name": "Fortune",
+      "description": "The playground classic",
+      "url": "./index.html?source=pwa#/model/fortune-teller/1",
+      "icons": [{ "src": "images/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Paper Cup",
+      "short_name": "Cup",
+      "description": "A first model that holds water",
+      "url": "./index.html?source=pwa#/model/cup/1",
+      "icons": [{ "src": "images/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    { "src": "images/screens/wide-home.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "All models" },
+    { "src": "images/screens/wide-crane.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "Crane — the petal fold" },
+    { "src": "images/screens/wide-plane.png", "sizes": "1280x720", "type": "image/png", "form_factor": "wide", "label": "Dart Plane — step by step" },
+    { "src": "images/screens/narrow-home.png", "sizes": "412x915", "type": "image/png", "form_factor": "narrow", "label": "All models" },
+    { "src": "images/screens/narrow-crane.png", "sizes": "412x915", "type": "image/png", "form_factor": "narrow", "label": "The finished crane" },
+    { "src": "images/screens/narrow-fortune.png", "sizes": "412x915", "type": "image/png", "form_factor": "narrow", "label": "Fortune Teller — corners to the centre" }
+  ],
+  "prefer_related_applications": false
 }
